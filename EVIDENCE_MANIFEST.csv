@@ -1,0 +1,51 @@
+Attack Observation,Filename,Description
+AO2,AO2_Evidence_01_Figure_01_DShield_Login_Record.png,Figure 1 - DShield portal login record for source 31.56.209.72 and the observed Telnet credentials.
+AO2,AO2_Evidence_02_Supplementary_Figure_A_DShield_IP_Information.png,Supplementary Figure A - DShield IP information captured for 31.56.209.72.
+AO2,AO2_Evidence_03_Figure_02_Wireshark_Telnet_TCP_Stream.png,Figure 2 - Wireshark Follow TCP Stream showing cleartext Telnet authentication and the start of writable-directory testing.
+AO2,AO2_Evidence_04_Figure_03_Security_Onion_Session_Correlation.png,"Figure 3 - Security Onion Hunt records correlating endpoint, Zeek, and NetFlow activity."
+AO2,AO2_Evidence_05_Figure_04_Cowrie_Writable_Directory_Tests.png,Figure 4 - Cowrie TTY replay showing writable-directory tests.
+AO2,AO2_Evidence_06_Figure_05_WRITABLE_Artifact_Inspection.png,Figure 5 - Local inspection of the preserved WRITABLE test artifact.
+AO2,AO2_Evidence_07_Figure_06_Process_Inspection_and_Kill_Logic.png,"Figure 6 - TTY replay showing process inspection, kill logic, and the loader command."
+AO2,AO2_Evidence_08_Figure_07_CAT_SH_Retrieval.png,Figure 7 - TTY replay showing successful retrieval and execution attempt for cat.sh.
+AO2,AO2_Evidence_09_Figure_08_CAT_SH_Loader_Contents.png,Figure 8 - Recovered cat.sh loader and its architecture-specific download-and-execute sequence.
+AO2,AO2_Evidence_10_Figure_09_CPU_Discovery_and_Fallback_Sequence.png,"Figure 9 - TTY replay showing later loader entries, CPU discovery, and fallback behavior."
+AO2,AO2_Evidence_11_Figure_10_Cowrie_Downloaded_Payloads.png,Figure 10 - Cowrie downloaded-payload dashboard with the three preserved artifacts.
+AO2,AO2_Evidence_12_Figure_11_Local_Artifact_Validation.png,"Figure 11 - Local validation of the loader, WRITABLE artifact, and ARM ELF object."
+AO2,AO2_Evidence_13_Figure_12_ARM_ELF_Hex_Reconstruction.png,Figure 12 - TTY replay showing hexadecimal reconstruction of iran.armv5l.
+AO2,AO2_Evidence_14_Figure_13_ARM_ELF_File_Identification.png,Figure 13 - file utility identifying the preserved object as a truncated 32-bit ARM ELF.
+AO2,AO2_Evidence_15_Figure_14_TTY_Metadata.png,Figure 14 - TTY metadata used to anchor the replay interval and session duration.
+AO3,AO3_Evidence_01_Figure_01_Cowrie_Source_Dashboard.png,Figure 1 - Cowrie dashboard filtered to 45.134.12.117.
+AO3,AO3_Evidence_02_Figure_02_Six_Successful_Logins.png,Figure 2 - Security Onion events showing six successful Cowrie login records.
+AO3,AO3_Evidence_03_Figure_03_Largest_TTY_Inventory.png,Figure 3 - Local TTY inventory showing the 32.4 MB recording selected for investigation.
+AO3,AO3_Evidence_04_Figure_04_Largest_TTY_Base64_Replay.png,Figure 4 - Replay of the largest TTY showing Base64 text appended to /tmp/s.b64.
+AO3,AO3_Evidence_05_Figure_05_Hunt_TTY_Hash_Search.png,Figure 5 - Security Onion Hunt search using the TTY input hash.
+AO3,AO3_Evidence_06_Figure_06_Expanded_Cowrie_Source_Record.png,Figure 6 - Expanded Cowrie event identifying source 45.134.12.117.
+AO3,AO3_Evidence_07_Figure_07_Cowrie_TTY_Session_Table.png,Figure 7 - Cowrie TTY session table linking six recordings to the source.
+AO3,AO3_Evidence_08_Figure_08_Decode_and_Launch_Command_Filter.png,"Figure 8 - Command filter showing decode, chmod, cleanup, and detached launch commands."
+AO3,AO3_Evidence_09_Figure_09_Base64_ELF_Delivery.png,Figure 9 - TTY replay showing repeated Base64 binary delivery.
+AO3,AO3_Evidence_10_Figure_10_CyberChef_ELF_Decoding.png,Figure 10 - CyberChef decoding showing the ELF magic bytes.
+AO3,AO3_Evidence_11_Figure_11_Local_Static_Decoding.png,"Figure 11 - Local decoding, file classification, hashes, and ELF validation."
+AO3,AO3_Evidence_12_Figure_12_Cowrie_Payload_Inventory.png,Figure 12 - Cowrie payload inventory containing encoded and decoded artifacts.
+AO3,AO3_Evidence_13_Figure_13_Architecture_File_Classification.png,"Figure 13 - Local file classification for x86-64, MIPS, ARM, and Base64 artifacts."
+AO3,AO3_Evidence_14_Figure_14_SOCKS5_Strings.png,"Figure 14 - Strings showing SOCKS5 text, credentials, port, and microsocks.c."
+AO3,AO3_Evidence_15_Figure_15_NM_Network_Symbols.png,Figure 15 - nm output showing server and networking symbols.
+AO3,AO3_Evidence_16_Figure_16_READELF_Network_Symbols.png,"Figure 16 - readelf output showing socket, bind, listen, accept, and connect functions."
+AO3,AO3_Evidence_17_Figure_17_DShield_IP_Context.png,Figure 17 - SANS ISC/DShield information snapshot for 45.134.12.117.
+AO3,AO3_Evidence_18_Figure_18_Original_TTY_Inventory.png,Figure 18 - Original TTY inventory used to select and preserve the attack evidence.
+AO4,AO4_Evidence_01_Figure_01_Cowrie_Source_Dashboard.png,Figure 1 - Cowrie dashboard filtered to 91.92.47.37.
+AO4,AO4_Evidence_02_Figure_02_DShield_Source_and_Payload_Server.png,Figure 2 - DShield information for the attacking source and payload server.
+AO4,AO4_Evidence_03_Figure_03_Authentication_Dashboard.png,"Figure 3 - Dashboard showing root, common passwords, and successful logins."
+AO4,AO4_Evidence_04_Figure_04_TFTP_Payload_IP_Search.png,Figure 4 - Initial Hunt search for payload server 91.92.42.213.
+AO4,AO4_Evidence_05_Figure_05_Cowrie_Filter.png,Figure 5 - Cowrie-filtered Hunt search for the payload server.
+AO4,AO4_Evidence_06_Figure_06_Expanded_Command_Source_Record.png,Figure 6 - Expanded command event revealing source 91.92.47.37.
+AO4,AO4_Evidence_07_Figure_07_Cross_Dataset_Hunt_Results.png,Figure 7 - Cross-dataset Hunt results after filtering to 91.92.47.37.
+AO4,AO4_Evidence_08_Figure_08_Cowrie_Session_and_TTY.png,Figure 8 - Cowrie dashboard linking session fd29ec61c883 to its TTY recording.
+AO4,AO4_Evidence_09_Figure_09_Local_TTY_Verification.png,Figure 9 - Local verification that the TTY object remained available for replay.
+AO4,AO4_Evidence_10_Figure_10_Indexed_Loader_Command.png,"Figure 10 - Indexed command showing HTTP, FTP, TFTP, execution, and cleanup stages."
+AO4,AO4_Evidence_11_Figure_11_HTTP_Loader_Request_and_Response.png,Figure 11 - HTTP request and response body for /phantom.sh.
+AO4,AO4_Evidence_12_Figure_12_Local_Loader_Identification.png,"Figure 12 - Local identification of the 6,799-byte Bash loader."
+AO4,AO4_Evidence_13_Figure_13_Cowrie_Artifact_Inventory.png,Figure 13 - Cowrie downloaded-payload dashboard with two unique hashes.
+AO4,AO4_Evidence_14_Figure_14_Loader_File_Utility.png,Figure 14 - file utility identifying the loader as an ASCII Bash script.
+AO4,AO4_Evidence_15_Figure_15_Non_Malware_Text_Artifact.png,"Figure 15 - Local inspection of the second hash, a Cowrie text artifact rather than malware."
+AO4,AO4_Evidence_16_Figure_16_Infrastructure_Reputation_Context.png,Figure 16 - Infrastructure relationship and reputation context.
+AO4,AO4_Evidence_17_Figure_17_Preserved_TTY_File.png,Figure 17 - Preserved TTY file used to anchor the replay and session evidence.
