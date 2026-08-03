@@ -128,6 +128,90 @@ Session `c3f420d74b04` wrote `/tmp/s.py` using a heredoc and submitted a detache
 
 The script embedded `root1234 / toor1234` but also accepted no-authentication negotiation under some conditions, creating the possibility of an open proxy.
 
+<details>
+    <summary>Click to expand code</summary>
+
+    ```bash
+    #!/usr/bin/env python3
+    """Minimal SOCKS5 server. Single file, no deps. Port 44848, auth root1234:toor1234"""
+    import socket, threading, os, sys, hashlib
+
+    PORT = int(os.environ.get("SOCKS_PORT", 44848))
+    USER = os.environ.get("SOCKS_USER", "root1234")
+    PASS = os.environ.get("SOCKS_PASS", "toor1234")
+
+    def handle_client(c):
+        try:
+            auth = c.recv(1024)
+            if len(auth) < 3 or auth[0] != 5: c.close(); return
+            nmethods = auth[1]
+            methods = auth[2:2+nmethods]
+            if 2 in methods:  # username/password
+                c.sendall(b"\x05\x02")
+                sub = c.recv(1024)
+                if len(sub) < 5: c.close(); return
+                ulen = sub[1]
+                uname = sub[2:2+ulen].decode()
+                plen = sub[2+ulen]
+                pword = sub[3+ulen:3+ulen+plen].decode()
+                if uname != USER or pword != PASS:
+                    c.sendall(b"\x01\x01"); c.close(); return
+                c.sendall(b"\x01\x00")
+            elif 0 in methods:  # no auth
+                c.sendall(b"\x05\x00")
+            else:
+                c.sendall(b"\x05\xff"); c.close(); return
+
+            req = c.recv(1024)
+            if len(req) < 10: c.close(); return
+            atype = req[3]
+            if atype == 1:  # IPv4
+                dst = socket.inet_ntoa(req[4:8])
+                dport = (req[8] << 8) | req[9]
+            elif atype == 3:  # domain
+                dlen = req[4]
+                dst = req[5:5+dlen].decode()
+                dport = (req[5+dlen] << 8) | req[6+dlen]
+            else: c.close(); return
+
+            try:
+                remote = socket.socket(); remote.settimeout(30)
+                remote.connect((dst, dport))
+                c.sendall(b"\x05\x00\x00\x01" + socket.inet_aton("0.0.0.0") + b"\x00\x00")
+                threading.Thread(target=lambda: pipe(c, remote), daemon=True).start()
+                pipe(remote, c)
+            except:
+                try: c.sendall(b"\x05\x01\x00\x01" + socket.inet_aton("0.0.0.0") + b"\x00\x00")
+                except: pass
+        except: c.close()
+
+    def pipe(a, b):
+        try:
+            while True:
+                d = a.recv(4096)
+                if not d: break
+                b.sendall(d)
+        except: pass
+        try: a.close(); b.close()
+        except: pass
+
+    def main():
+        s = socket.socket(); s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        s.bind(("0.0.0.0", PORT)); s.listen(500)
+        print(f"SOCKS5 on :{PORT} auth={USER}:{PASS}")
+        while True:
+            c, addr = s.accept()
+            threading.Thread(target=handle_client, args=(c,), daemon=True).start()
+
+    if __name__ == "__main__":
+        main()
+
+    EOF
+    ```
+</details>
+
+*Attacker Bash script with Python3 code*
+
 ## 7. Why the Python Code Is a SOCKS5 Listener
 
 | Code behavior | Meaning |
