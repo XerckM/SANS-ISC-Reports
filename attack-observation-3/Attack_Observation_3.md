@@ -208,9 +208,10 @@ The script embedded `root1234 / toor1234` but also accepted no-authentication ne
 
     EOF
     ```
-</details>
 
 *Attacker Bash script with Python3 code*
+
+</details>
 
 ## 7. Why the Python Code Is a SOCKS5 Listener
 
