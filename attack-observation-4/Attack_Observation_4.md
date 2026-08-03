@@ -1,7 +1,5 @@
 # Attack Observation 4: Automated Mirai Malware Loader Attempt
 
-![Attack Observation 4 cover](images/AO4_Cover.png)
-
 ## Report metadata
 
 | Field | Value |

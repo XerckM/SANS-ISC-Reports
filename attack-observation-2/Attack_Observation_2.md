@@ -1,7 +1,5 @@
 # Attack Observation 2: Automated Telnet Malware Loader Attempt
 
-![Attack Observation 2 cover](images/AO2_Cover.png)
-
 ## Report metadata
 
 | Field | Value |

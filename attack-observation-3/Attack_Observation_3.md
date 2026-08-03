@@ -1,7 +1,5 @@
 # Attack Observation 3: Multi-Architecture SOCKS5 Proxy Deployment Attempt
 
-![Attack Observation 3 cover](images/AO3_Cover.png)
-
 ## Report metadata
 
 | Field | Value |
